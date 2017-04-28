@@ -5,6 +5,11 @@
 
 package br.pucrs.ap3.trees;
 
+/**
+ * 
+ * @author marco.mangan@pucrs.br
+ *
+ */
 public class BinarySearchTreeApp {
 	public static void main(String[] args) {
 		BinarySearchTree bst = new BinarySearchTree();
