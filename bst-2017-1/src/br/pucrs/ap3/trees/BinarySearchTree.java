@@ -1,6 +1,5 @@
 package br.pucrs.ap3.trees;
 
-import javax.management.RuntimeErrorException;
 
 /**
  * 
