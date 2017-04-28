@@ -118,4 +118,23 @@ public class BinarySearchTree {
 		return toString0(node.left) + String.format(" %d ", node.key) + toString0(node.right);
 	}
 
+	/**
+	 * Reports level number for every node.
+	 * 
+	 * Prints key and level for every node. Root node is at level 0.
+	 */
+	public void reportLevel() {
+		reportLevel0(root, 0);
+	}
+
+	private void reportLevel0(Node node, int level) {
+		if (node != null) {
+			System.out.printf("Key=%d Level=%d!\n", node.key, level);
+
+			reportLevel0(node.left, level + 1);
+			reportLevel0(node.right, level + 1);
+		}
+
+	}
+
 }

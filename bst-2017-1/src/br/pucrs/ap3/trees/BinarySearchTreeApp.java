@@ -16,14 +16,18 @@ public class BinarySearchTreeApp {
 		System.out.println("Teste da BST");
 		System.out.println(bst);
 		System.out.println(bst.size());
+		bst.reportLevel();
 		bst.add(10);
 		System.out.println(bst);
 		System.out.println(bst.size());
+		bst.reportLevel();
 		bst.add(20);
 		System.out.println(bst);
 		System.out.println(bst.size());
+		bst.reportLevel();
 		bst.add(5);
 		System.out.println(bst);
 		System.out.println(bst.size());
+		bst.reportLevel();
 	}
 }
