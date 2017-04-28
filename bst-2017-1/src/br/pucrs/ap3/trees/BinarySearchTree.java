@@ -127,6 +127,11 @@ public class BinarySearchTree {
 		reportLevel0(root, 0);
 	}
 
+	/**
+	 * 
+	 * @param node
+	 * @param level
+	 */
 	private void reportLevel0(Node node, int level) {
 		if (node != null) {
 			System.out.printf("Key=%d Level=%d!\n", node.key, level);
@@ -136,5 +141,31 @@ public class BinarySearchTree {
 		}
 
 	}
+	
+	/**
+	 * Reports height number for every node.
+	 * 
+	 * Prints key and height for every node. Leaf nodes are at height 0.
+	 */
+	public void reportHeight() {
+		reportHeight0(root);
+	}
 
+	/**
+	 * 
+	 * @param node
+	 * @return
+	 */
+	private int reportHeight0(Node node) {
+		if (node == null) {
+			return -1;
+		}
+		int hl = reportHeight0(node.left);
+		int hr = reportHeight0(node.right);		
+		int height = Math.max(hl, hr) + 1;
+		System.out.printf("Key=%d Height=%d!\n", node.key, height );
+		return height;
+	}
+	
+	
 }
