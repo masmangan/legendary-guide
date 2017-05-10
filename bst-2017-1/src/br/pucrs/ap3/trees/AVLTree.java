@@ -64,8 +64,6 @@ public class AVLTree {
 			throw new RuntimeException("Valor existente!");
 		if (node.key < value) {
 			node.right = add0(node.right, value);
-			// TODO: AVL
-			// Qual o fator de equilibrio? Delta
 			int delta = getHeight(node.left) 
 					- getHeight(node.right);
 			System.out.printf(
@@ -81,7 +79,19 @@ public class AVLTree {
 			}
 		} else {
 			node.left = add0(node.left, value);
-			// TODO: AVL
+			int delta = getHeight(node.left) 
+					- getHeight(node.right);
+			System.out.printf(
+					"add0::Key=%d, Delta=%d\n", 
+					node.key, delta);
+			if (delta == 2) {
+				if (value < node.left.key)
+					node = rotateRight(node);
+				else {
+					node.left = rotateLeft(node.left);
+					node = rotateRight(node);
+				}
+			}			
 		}
 		// Atualizar altura em cada nodo...
 		int hl = getHeight(node.left);
@@ -91,15 +101,19 @@ public class AVLTree {
 		return node;
 	}
 
-	private AVLNode rotateRight(AVLNode right) {
-		// TODO completar!
-		return null;
+	private AVLNode rotateRight(AVLNode k2) {
+		AVLNode k1 = k2.left;
+		k2.left = k1.right;
+		k1.right = k2;
+		// TODO atualizar altura de K1 e k2
+		return k1 ;
 	}
 
 	private AVLNode rotateLeft(AVLNode k1) {
 		AVLNode k2 = k1.right;
 		k1.right = k2.left;
 		k2.left = k1;
+		// TODO atualizar altura de K1 e k2
 		return k2 ;
 	}
 
