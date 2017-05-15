@@ -13,5 +13,13 @@ public class HeapTest {
 		boolean actual = Heap.isMaxHeap(v);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testMaxHeap() {
+		int[] v = { 85, 70, 80, 50, 40, 75, 30, 20, 10, 35, 15, 62, 58 };
+		boolean expected = true;
+		boolean actual = Heap.isMaxHeap(v);
+		assertEquals(expected, actual);
+	}
 
 }
