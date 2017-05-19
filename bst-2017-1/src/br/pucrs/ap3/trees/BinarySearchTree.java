@@ -5,6 +5,9 @@
 
 package br.pucrs.ap3.trees;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The {@code BinarySearchTree} class is...
  * 
@@ -141,7 +144,7 @@ public class BinarySearchTree {
 		}
 
 	}
-	
+
 	/**
 	 * Reports height number for every node.
 	 * 
@@ -161,11 +164,50 @@ public class BinarySearchTree {
 			return -1;
 		}
 		int hl = reportHeight0(node.left);
-		int hr = reportHeight0(node.right);		
+		int hr = reportHeight0(node.right);
 		int height = Math.max(hl, hr) + 1;
-		System.out.printf("Key=%d Height=%d!\n", node.key, height );
+		System.out.printf("Key=%d Height=%d!\n", node.key, height);
 		return height;
 	}
-	
-	
+
+	// 6. Escreva um algoritmo que apresente o caminho de um nodo que contém um
+	// determinado valor até a sua folha, considerando o caminho de maior
+	// altura.
+	public void caminhoMaiorFolha(int value) {
+		caminhoMaiorFolha0(root, value);
+	}
+
+	private void caminhoMaiorFolha0(Node node, int value) {
+		if (node == null)
+			return;
+		
+		if (node.key == value) {
+			// TODO: apresentar o caminho até a folha
+			List<Integer> caminho = montarCaminho(node);
+			System.out.println(caminho);
+		}
+		
+		caminhoMaiorFolha0(node.right, value);
+		caminhoMaiorFolha0(node.left, value);
+	}
+
+	private List<Integer> montarCaminho(Node node) {
+		if (node == null) {
+			return new ArrayList<>();
+		} else {
+			List<Integer> ce = montarCaminho(node.left);
+			List<Integer> cd = montarCaminho(node.right);
+			if (ce.size() > cd.size()) {
+				ce.add(node.key);
+				return ce;
+			} else {
+				cd.add(node.key);
+				return cd;
+			}
+		}
+	}
+
 }
+
+
+
