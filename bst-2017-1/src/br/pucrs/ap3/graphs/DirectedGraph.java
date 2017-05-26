@@ -1,8 +1,8 @@
 package br.pucrs.ap3.graphs;
 
-public class Graph extends AbstractGraph {
+public class DirectedGraph extends AbstractGraph {
 
-	public Graph(int size) {
+	public DirectedGraph(int size) {
 		super(size);
 	}
 
@@ -10,7 +10,6 @@ public class Graph extends AbstractGraph {
 		checkNode(i);
 		checkNode(j);
 		m[i][j] = value;
-		m[j][i] = value;
 	}
 
 }

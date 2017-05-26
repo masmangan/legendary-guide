@@ -2,7 +2,7 @@ package br.pucrs.ap3.graphs;
 
 public class GraphApp {
 	public static void main(String[] args) {
-		Graph g = new Graph(5);
+		AbstractGraph g = new Graph(5);
 
 		g.addEdge(1, 2);
 		g.addEdge(1, 5);
