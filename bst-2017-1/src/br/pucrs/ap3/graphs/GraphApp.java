@@ -10,14 +10,14 @@ public class GraphApp {
 		g.addEdge(2, 3);
 		g.addEdge(2, 4);
 		g.addEdge(2, 5);
-		
+
 		g.addEdge(3, 4);
 
 		g.addEdge(4, 5);
-		
+
 		System.out.println(g);
-		//System.out.println(g.getNext(2));
+		// System.out.println(g.getNext(2));
 		System.out.println(g.breadth(1));
-		
+
 	}
 }
