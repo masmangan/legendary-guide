@@ -10,7 +10,7 @@ import org.junit.Test;
 public class AbstractGraphTest {
 
 	@Test
-	public void testG1() {
+	public void testBreadthG1() {
 		AbstractGraph g = new Graph(5);
 		g.addEdge(1, 2);
 		g.addEdge(1, 3);
@@ -28,7 +28,7 @@ public class AbstractGraphTest {
 	}
 
 	@Test
-	public void testG2() {
+	public void testBreadthG2() {
 		AbstractGraph g = new Graph(4);
 		g.addEdge(1, 2);
 		g.addEdge(2, 4);
@@ -43,7 +43,7 @@ public class AbstractGraphTest {
 	}
 	
 	@Test
-	public void testG3() {
+	public void testBreadthG3() {
 		AbstractGraph g = new Graph(5);
 		g.addEdge(1, 2);
 		g.addEdge(1, 3);
@@ -55,5 +55,40 @@ public class AbstractGraphTest {
 		expected.add(3);
 		expected.add(4);
 		assertEquals(expected , actual);
-	}	
+	}
+	
+	
+	@Test
+	public void testDepthG1() {
+		AbstractGraph g = new Graph(5);
+		g.addEdge(1, 2);
+		g.addEdge(1, 3);
+		g.addEdge(2, 4);
+		g.addEdge(2, 5);
+		List<Integer> actual = g.depth(1);
+		String expected = "[1, 2, 4, 5, 3]";
+		assertEquals(expected , actual.toString());
+	}
+
+	@Test
+	public void testDepthG2() {
+		AbstractGraph g = new Graph(4);
+		g.addEdge(1, 2);
+		g.addEdge(2, 4);
+		g.addEdge(3, 4);
+		List<Integer> actual = g.depth(2);
+		String expected = "[2, 1, 4, 3]";
+		assertEquals(expected , actual.toString());
+	}
+	
+	@Test
+	public void testDepthG3() {
+		AbstractGraph g = new Graph(5);
+		g.addEdge(1, 2);
+		g.addEdge(1, 3);
+		g.addEdge(2, 4);
+		List<Integer> actual = g.depth(1);
+		String expected = "[1, 2, 4, 3]";
+		assertEquals(expected , actual.toString());
+	}		
 }

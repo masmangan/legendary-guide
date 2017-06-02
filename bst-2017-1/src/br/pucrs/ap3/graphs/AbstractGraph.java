@@ -1,7 +1,6 @@
 package br.pucrs.ap3.graphs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -63,17 +62,17 @@ public abstract class AbstractGraph {
 		}
 		return r;
 	}
-	
-	//enum {
-	//	
-	//}
+
+	// enum {
+	//
+	// }
 	private static final int WHITE = 10;
 	private static final int GRAY = 20;
 	private static final int BLACK = 30;
-	
+
 	public List<Integer> breadth(int s) {
 		List<Integer> r = new ArrayList<>();
-		
+
 		checkNode(s);
 		// 1 - 7
 		// TODO trocar para enum!
@@ -91,8 +90,8 @@ public abstract class AbstractGraph {
 		// 8, 9
 		List<Integer> Q = new LinkedList<Integer>();
 		Q.add(s);
-		//10
-		while (  ! Q.isEmpty() ) {
+		// 10
+		while (!Q.isEmpty()) {
 			int u = Q.remove(0);
 			for (Integer v : getNext(u)) {
 				if (color[v] == WHITE) {
@@ -105,16 +104,33 @@ public abstract class AbstractGraph {
 			color[u] = BLACK;
 			r.add(u);
 		}
-		
-		//System.out.println(Arrays.toString(d));
-		//System.out.println(Arrays.toString(p));
-		
+
+		// System.out.println(Arrays.toString(d));
+		// System.out.println(Arrays.toString(p));
+
 		return r;
 	}
 
-	public List<Integer> depth(int i) {
-		checkNode(i);
-		// TODO
-		return null;
+	public List<Integer> depth(int s) {
+		checkNode(s);
+		List<Integer> r = new ArrayList<>();
+		depth0(s, r);
+		return r;
 	}
+
+	private void depth0(int s, List<Integer> r) {
+		r.add(s);
+		for (Integer v : getNext(s))
+			if (!r.contains(v))
+				depth0(v, r);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 }
