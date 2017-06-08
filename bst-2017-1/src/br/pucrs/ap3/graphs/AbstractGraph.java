@@ -125,12 +125,43 @@ public abstract class AbstractGraph {
 				depth0(v, r);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
+	private int counter;
+	private int[] color;
+	private int[] discovery;
+	private int[] finish;
+
+	public List<Integer> topological() {
+		counter = 1;
+		color = new int[m.length];
+		discovery = new int[m.length];
+		finish = new int[m.length];
+		for (int u = 1; u < color.length; u++) {
+			color[u] = WHITE;
+			discovery[u] = -1;
+			finish[u] = -1;
+		}
+		List<Integer> sorted = new ArrayList<>();
+		for (int u = 1; u < color.length; u++) {
+			if (color[u] == WHITE) {
+				topological0(u, sorted);
+			}
+		}
+		return sorted;
+	}
+
+	private void topological0(int node, List<Integer> sorted) {
+		sorted.add(node);
+		color[node] = GRAY;
+		discovery[node] = counter;
+		counter++;
+		for (Integer adjacentNode : getNext(node)) {
+			if (!sorted.contains(adjacentNode)) {
+				topological0(adjacentNode, sorted);
+			}
+		}
+		color[node] = BLACK;
+		finish[node] = counter;
+		counter++;
+	}
+
 }
