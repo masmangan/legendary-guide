@@ -1,8 +1,11 @@
 package br.pucrs.ap3.graphs;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Grafo n�o-dirigido (Directed graph - Digrafo).
@@ -162,6 +165,41 @@ public abstract class AbstractGraph {
 		color[node] = BLACK;
 		finish[node] = counter;
 		counter++;
+	}
+
+	public List<Edge> kruskal() {
+		List<Edge> A = new ArrayList<Edge>();
+		List<Set<Integer>> sets = new ArrayList<Set<Integer>>();
+		sets.add(null);
+
+		for (int v = 1; v < m.length; v++) {
+			Set<Integer> s = new HashSet<Integer>();
+			s.add(v);
+			sets.add(s);
+		}
+		System.out.println(sets);
+
+		List<Edge> edges = new ArrayList<Edge>();
+		for (int i = 1; i < m.length; i++) {
+			for (int j = i + 1; j < m.length; j++) {
+				if (m[i][j] != 0) {
+					System.out.printf("{%d, %d} w = %d %n", i, j, m[i][j]);
+					edges.add(new Edge(i,j, m[i][j]));
+				}
+			}
+		}
+		Collections.sort(edges);
+		System.out.println(edges);
+		
+		for (Edge edge : edges) {
+			if (sets.get(edge.u) != sets.get(edge.v)) {
+				A.add(edge);
+				sets.get(edge.u).addAll(sets.get(edge.v));
+				sets.set(edge.v, sets.get(edge.u));
+			}
+		}
+		
+		return A;
 	}
 
 }
