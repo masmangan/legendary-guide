@@ -184,13 +184,13 @@ public abstract class AbstractGraph {
 			for (int j = i + 1; j < m.length; j++) {
 				if (m[i][j] != 0) {
 					System.out.printf("{%d, %d} w = %d %n", i, j, m[i][j]);
-					edges.add(new Edge(i,j, m[i][j]));
+					edges.add(new Edge(i, j, m[i][j]));
 				}
 			}
 		}
 		Collections.sort(edges);
 		System.out.println(edges);
-		
+
 		for (Edge edge : edges) {
 			if (sets.get(edge.u) != sets.get(edge.v)) {
 				A.add(edge);
@@ -198,8 +198,39 @@ public abstract class AbstractGraph {
 				sets.set(edge.v, sets.get(edge.u));
 			}
 		}
-		
+
 		return A;
+	}
+
+	public int[][] floydWarshall() {
+		int n = m.length;
+		int D[][] = new int[n][n];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				D[i][j] = edgeCost(i, j);
+			}
+		}
+		for (int k = 0; k < n; k++) {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					D[i][j] = Math.min(D[i][j], D[i][k] + D[k][j]);
+				}
+			}
+		}
+		return D;
+	}
+
+	private int edgeCost(int i, int j) {
+		if (i == j)
+			return 0;
+		int cost = m[i][j];
+		if (cost == 0)
+			return 100; // Infinite?
+		return cost;
+	}
+
+	public void fordFulkerson() {
+		// TODO:
 	}
 
 }
