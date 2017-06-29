@@ -35,33 +35,37 @@ public class GraphApp {
 //		System.out.println(g.kruskal());
 //		
 		
-		AbstractGraph g = new DirectedGraph(5);
-		g.addEdge(1, 2, 3);
-		g.addEdge(1, 3, 10);
-		g.addEdge(1, 5, 4);
+//		AbstractGraph g = new DirectedGraph(5);
+//		g.addEdge(1, 2, 3);
+//		g.addEdge(1, 3, 10);
+//		g.addEdge(1, 5, 4);
+//		
+//		g.addEdge(2, 4, 1);
+//		g.addEdge(2, 5, 7);
+//		
+//		g.addEdge(3, 2, 4);
+//		
+//		g.addEdge(4, 3, 5);
+//		g.addEdge(4, 1, 2);
+//		
+//		g.addEdge(5, 4, 6);
+//		System.out.println(g);
+//	
+//		int[][] r = g.floydWarshall();
+//		for (int i = 1; i < r.length; i++) {
+//			for (int j = 1; j < r.length; j++) {
+//				System.out.printf("%4d", r[i][j]);
+//			}
+//			System.out.println();
+//			
+//		}
 		
-		g.addEdge(2, 4, 1);
-		g.addEdge(2, 5, 7);
-		
-		g.addEdge(3, 2, 4);
-		
-		g.addEdge(4, 3, 5);
-		g.addEdge(4, 1, 2);
-		
-		g.addEdge(5, 4, 6);
-		System.out.println(g);
-	
-		int[][] r = g.floydWarshall();
-		for (int i = 1; i < r.length; i++) {
-			for (int j = 1; j < r.length; j++) {
-				System.out.printf("%4d", r[i][j]);
-			}
-			System.out.println();
-			
-		}
-		
-		
-		
+		DirectedGraph g = new DirectedGraph(4);
+		g.addEdge(1, 2, 10);
+		g.addEdge(2, 3, 7);
+		g.addEdge(1, 4, 7);
+
+		System.out.println(g.pathFromTo(1, 3));
 		
 		
 		
