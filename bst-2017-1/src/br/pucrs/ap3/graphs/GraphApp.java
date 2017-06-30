@@ -60,13 +60,12 @@ public class GraphApp {
 //			
 //		}
 		
-		DirectedGraph g = new DirectedGraph(4);
-		g.addEdge(1, 2, 10);
-		g.addEdge(2, 3, 7);
-		g.addEdge(1, 4, 7);
+		DirectedGraph g = new DirectedGraph(3);
+		g.addEdge(1, 2, 15);
+		g.addEdge(2, 3, 25);
 
-		System.out.println(g.pathFromTo(1, 3));
-		
+		//System.out.println(g.pathFromTo(1, 3));
+		System.out.println(g.fordFulkerson(1, 3));
 		
 		
 		
